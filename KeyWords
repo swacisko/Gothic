@@ -1,0 +1,60 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gothic;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.lang.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+/**
+ *
+ * @author s384055
+ */
+public class KeyWords {    
+    public void addKeyWord( String word ){
+        keyWords.add( new String(word) );
+    }    
+    public ArrayList<String> getKeyWords(){
+        return keyWords;
+    }
+    public void removeKeyWords( String word ){
+        for( String t : keyWords ){
+            if( t.equals( word ) ){
+                keyWords.remove( t );
+            }
+        }
+    }
+    
+    public ArrayList<String> getSimilarWords( String word ){
+        return getSimilarWords( word, 60 );
+    }
+    
+    public ArrayList<String> getSimilarWords( String word, final int percentSimilarity ){
+        ArrayList< String > words = new ArrayList<>(10);
+        for( String s : keyWords ){
+            int length = word.length() < s.length() ? word.length() : s.length();
+            int ile = 0;
+            for( int i=0; i< length ; i++ ){
+                if( word.charAt(i) == s.charAt(i) ){
+                    ile++;
+                }
+            }
+            
+            if( (double)(ile/length) >= percentSimilarity ){
+                keyWords.add( new String( s ) );
+            }
+        }
+        words.trimToSize();
+        return words;
+    }
+    
+    
+    private ArrayList<String> keyWords = new ArrayList<>(20);
+}
+
+
