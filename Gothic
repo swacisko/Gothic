@@ -1,0 +1,172 @@
+
+package gothic;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Toolkit;
+import java.awt.image.BufferStrategy;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+
+public class Gothic extends JPanel implements Runnable  {
+
+    private Kolonia world;
+    
+    private JFrame okno;
+    
+    private Thread game;
+    
+    private BufferedImage map;
+    private BufferedImage bezi;
+    private int xbezi = 420;
+    private int ybezi = 130;
+    
+    private JTextField order = new JTextField("What you want to do?");
+     
+    public static void main(String[] args) {
+        Gothic game = new Gothic();
+        game.init_world();
+    }
+    
+    public Gothic()
+    {
+        super();
+    }
+    
+    @Override
+    public void run(){
+        game();
+        repaint();
+    }
+
+    private void init_world(){
+
+        world = new Kolonia();
+        
+       Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+       okno = new JFrame(".: Gothic :.");       
+    
+       this.setBounds(0,0,d.width,d.height-30);
+       setSize(new Dimension(d.width,d.height-30));
+       setLayout(null);
+       okno.setBounds(0,0,d.width,d.height-30);
+       okno.setVisible(true);
+       okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//DO_NOTHING_ON_CLOSE);
+       okno.setResizable(false);
+       okno.add(this);
+       setBackground( Color.BLACK );
+
+       
+       game = new Thread(this);
+       
+       File imageFile = new File("mapa.jpg");
+       File bezzi = new File("bezi2.png");
+        try {
+            map = ImageIO.read(imageFile);
+            bezi = ImageIO.read(bezzi);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
+        
+      order.setBounds(100, 700, 700, 50);
+      add(order);
+      run();
+    }
+    
+    private void game(){
+        while (okno.isVisible()) {
+     //       long startTime = System.currentTimeMillis();
+            if( (order.getText()).equals("Old Camp") )
+            {
+                File imageFile = new File("oldcamp.jpg");
+                try {
+                    map = ImageIO.read(imageFile);
+                } catch (IOException e) {
+                    System.err.println("Blad odczytu obrazka");
+                    e.printStackTrace();
+            order.setText("What you want to do?");   
+            }
+            }
+            else if( (order.getText()).equals("New Camp") )
+            {
+                File imageFile = new File("newcamp.jpg");
+                try {
+                    map = ImageIO.read(imageFile);
+                } catch (IOException e) {
+                    System.err.println("Blad odczytu obrazka");
+                    e.printStackTrace();
+            order.setText("What you want to do?");   
+            }
+            }  
+            else if( (order.getText()).equals("Swamp Camp") )
+            {
+                File imageFile = new File("swampcamp.jpg");
+                try {
+                    map = ImageIO.read(imageFile);
+                } catch (IOException e) {
+                    System.err.println("Blad odczytu obrazka");
+                    e.printStackTrace();
+            order.setText("What you want to do?");   
+            }
+            }       
+            else if( (order.getText()).equals("World map") )
+            {
+                File imageFile = new File("mapa.jpg");
+                try {
+                    map = ImageIO.read(imageFile);
+                } catch (IOException e) {
+                    System.err.println("Blad odczytu obrazka");
+                    e.printStackTrace();
+            order.setText("What you want to do?");   
+            }
+            }       
+            else if( (order.getText()).equals("Right") )
+            {
+                xbezi += 10;     
+            order.setText("What you want to do?");   
+            }
+            else if( (order.getText()).equals("Left") )
+            {
+                xbezi -= 10;     
+            order.setText("What you want to do?");   
+            }
+            else if( (order.getText()).equals("Up") )
+            {
+                ybezi -= 10;    
+            order.setText("What you want to do?");   
+            } 
+            else if( (order.getText()).equals("Down") )
+            {
+                ybezi += 10;
+            order.setText("What you want to do?");   
+            }
+            repaint();
+        } 
+        okno.setVisible(false);
+    }
+        
+    @Override
+    public void paintComponent(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(map, 100, 100, this);
+        g2d.drawImage(bezi, xbezi, ybezi, this);
+        
+    }
+}
