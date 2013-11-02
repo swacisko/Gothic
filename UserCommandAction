@@ -1,0 +1,92 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gothic;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.lang.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+/**
+ *
+ * @author s384055
+ */
+
+
+public class UserCommandAction extends KeyWords {
+    public UserCommandAction(){
+        setKeyWords();
+    }
+    
+    public void setCommandName( String newCommandName ){
+        commandName = newCommandName;
+    }
+    public String getCommandName(){
+        return new String( commandName );
+    }
+    
+    public void addProneToActionObject( Object obj ){
+        proneToAction.add( obj );
+    }
+    
+    public void setKeyWords(){}
+    
+    private String commandName;    
+    private ArrayList<Object> proneToAction = new ArrayList<>(50); // objects that are associated with action
+            // e.g Diego is associated with Go To action, Fight Action ...
+}
+/*
+class FindCommand extends UserCommandAction{
+    public FindCommand(){
+        setCommandName( GothicConstants.FindAction );
+    }  
+}
+*/
+class FightCommand extends UserCommandAction{
+    public FightCommand(){
+        super();
+        setCommandName( GothicConstants.FightAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "fight" );
+        addKeyWord( "kill" );
+        addKeyWord( "defeat" );
+    }
+}
+
+class GoToCommand extends UserCommandAction{
+    public GoToCommand(){
+        super();
+        setCommandName( GothicConstants.GoToAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "go to" );
+        addKeyWord( "find" );
+        addKeyWord( "search" );
+        addKeyWord( "seek" );
+    }
+}
+
+class EscapeCommand extends UserCommandAction{
+    public EscapeCommand(){
+        super();
+        setCommandName( GothicConstants.EscapeAction );
+    }   
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "run" );
+        addKeyWord( "escape" );
+        addKeyWord( "flee" );
+        addKeyWord( "get away" );
+    }
+}
+
+ 
