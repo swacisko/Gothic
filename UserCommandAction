@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gothic;
 
 import javax.swing.*;
@@ -13,7 +10,7 @@ import java.awt.geom.*;
 
 /**
  *
- * @author s384055
+ * @author swacisko
  */
 
 
@@ -39,13 +36,8 @@ public class UserCommandAction extends KeyWords {
     private ArrayList<Object> proneToAction = new ArrayList<>(50); // objects that are associated with action
             // e.g Diego is associated with Go To action, Fight Action ...
 }
-/*
-class FindCommand extends UserCommandAction{
-    public FindCommand(){
-        setCommandName( GothicConstants.FindAction );
-    }  
-}
-*/
+
+//********************************************************************************* FightCommand
 class FightCommand extends UserCommandAction{
     public FightCommand(){
         super();
@@ -59,6 +51,7 @@ class FightCommand extends UserCommandAction{
     }
 }
 
+//********************************************************************************* GoToCommand
 class GoToCommand extends UserCommandAction{
     public GoToCommand(){
         super();
@@ -71,9 +64,12 @@ class GoToCommand extends UserCommandAction{
         addKeyWord( "find" );
         addKeyWord( "search" );
         addKeyWord( "seek" );
+        addKeyWord( "look for" );
+        addKeyWord( "move to" );
     }
 }
 
+//********************************************************************************** EscapeCommand
 class EscapeCommand extends UserCommandAction{
     public EscapeCommand(){
         super();
@@ -89,4 +85,53 @@ class EscapeCommand extends UserCommandAction{
     }
 }
 
- 
+//******************************************************************************** PICK COMMAND
+/*klasa PickCommand - jezeli uzytkownik bedzie chcial cos podniesc, to zostanie wywolana funkcja pick na rzecz
+ * pewnego obiektu zawartego w  liscie proneToAction tej klasy
+ * 
+ */
+class PickCommand extends UserCommandAction{
+    public PickCommand(){
+        super();
+        setCommandName( GothicConstants.PickAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "pick" );
+        addKeyWord( "pick up" );
+        addKeyWord( "lift" );
+        addKeyWord( "take" );
+        addKeyWord( "steal" ); // jesli chce cos ukrasc, to jest to rownowazne z akcja PickCommand
+    }
+}
+//*********************************************************************************************************
+/* klasa NoCommand - jesli z polecenia uzytkownika nie zostanie znaleziona zadna inna akcja UCA to zostanie
+ * zwrocony egzemplarz NoCommand. Wtedy powinno zostac zwrocone polecenie sparafrazowania polecenia uzytkownika
+ * lub tez
+ */
+class NoCommand extends UserCommandAction{ 
+                                               
+    public NoCommand(){
+        super();
+    }
+    
+    public String getRandomAnswer(){
+        int r = new Random().nextInt( answers.length );
+        return new String( answers[r] );
+    }
+    
+    private String[] answers = {
+        "I don't understand, can you repeat?",
+        "Please state your will more precisely",
+        "You can't do that!",
+        "What are you talking about?",
+        "That's impossible!",
+        "Please tell me what do you mean once again",
+        "I have no idea what you are talking about...",
+        "I'm confused...I didn't understand a single word..."
+    };
+    
+}
+
+
