@@ -1,0 +1,26 @@
+
+package gothic;
+
+
+public class Being {
+    
+    int hp;
+    int strength;
+    int dexterity;
+    int id;
+    boolean exist;
+    String name;
+    Location location;
+    
+    // weapon weap;
+    
+    Location get_location() { return location; }
+    
+    
+    
+    void trade(){}
+    void fight(){}
+    void quests(){}
+    
+    
+}
