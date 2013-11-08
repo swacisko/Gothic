@@ -1,0 +1,35 @@
+
+package gothic;
+
+
+public class Location {
+    
+    int x;
+    int y;
+    String name;
+    
+    public Location(int a, int b, String namme )
+    {   
+        x = a;
+        y = b;
+        name = namme;
+    }
+    
+    public void setCoord(int a, int b)
+    {
+        x = a;
+        y = b;
+    }
+    
+    public void setLocation(String namme)
+    {
+        name = namme;
+    }
+    
+    public int getX() { return x; }
+    
+    public int getY() { return y; }
+    
+    public String getLocation() { return name; }
+    
+}
