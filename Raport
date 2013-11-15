@@ -27,13 +27,19 @@ Wykonane zadania:
 
   Sylwester Swat:
                   - dalsza obróbka klasy UCA do przetwarzania i przerabiania tekstu w języku naturalnym;
+                  
                   - stworzenie szkieletu klasy zwracającej obiekt UCA oraz obiekt, na rzecz którego ma zostać wywołana
+                    
                     fukcja związana z tym obiektem UCA;
+                    
 
   Łukasz Michalak:
                   - dopianie do dokumentacji szerokiego opisu fabuły i wyzwań stająch przed głównym bohaterem, opisu
+                    
                     funkcjonalności gry oraz listy przedmiotów występujących w grze;
+                    
                   - stworzenie klasy Location zawierającej informacje o położeniu każdego obiektu w grze oraz klasy
+                    
                     Being będącej klasą podstawową dla wszelkich postaci w grze;
                   
 
@@ -43,12 +49,18 @@ Wykonane zadania:
   
   Sylwester Swat:
                   - opis modułu językowego oraz wyszczególnienie jego czterech podzespołów;
+                  
   Łukasz Michalak:
                   - opis modułu: graficznego, wykonawczego i statydtycznego
+                  
                   - opis zależności między modułami
+                  
                   - opis zależności pomiędzy obiektami
+                  
   Bartłomiej Akita:
                   - wprowadzenie drobnych poprawek merytorycznych dokumentacji
+                  
                   - dodanie / zmianę kilku propozycji mechanizmu gry
+                  
                   - opis instrukcji użytkownika;
                   
