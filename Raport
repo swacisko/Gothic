@@ -23,7 +23,7 @@ Wykonane zadania:
 
 08.11.2013.
 
-Wykonane zadani:
+Wykonane zadania:
 
   Sylwester Swat:
                   - dalsza obróbka klasy UCA do przetwarzania i przerabiania tekstu w języku naturalnym;
@@ -35,4 +35,20 @@ Wykonane zadani:
                     funkcjonalności gry oraz listy przedmiotów występujących w grze;
                   - stworzenie klasy Location zawierającej informacje o położeniu każdego obiektu w grze oraz klasy
                     Being będącej klasą podstawową dla wszelkich postaci w grze;
+                  
+
+15.11.2013.
+
+Wykonane zadania:
+  
+  Sylwester Swat:
+                  - opis modułu językowego oraz wyszczególnienie jego czterech podzespołów;
+  Łukasz Michalak:
+                  - opis modułu: graficznego, wykonawczego i statydtycznego
+                  - opis zależności między modułami
+                  - opis zależności pomiędzy obiektami
+  Bartłomiej Akita:
+                  - wprowadzenie drobnych poprawek merytorycznych dokumentacji
+                  - dodanie / zmianę kilku propozycji mechanizmu gry
+                  - opis instrukcji użytkownika;
                   
