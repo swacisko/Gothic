@@ -1,14 +1,224 @@
 Gothic
+
+
+Spis treści
+
+ 
+Spis treści	1
+Skład grupy	3
+Ogólna charakterystyka	3
+Założenia projektu	5
+Opis funkcjonalności	6
+Lista przedmiotów	7
+Instrukcje Użytkownika	9
+Wstępny pomysł implementacji	9
+Podział projektu na moduły	10
+Moduł graficzny	10
+Moduł językowy	10
+Moduł wykonawczy	11
+Moduł statystyczny	11
+Zależności między modułami	11
+
+ 
+ 
+Skład grupy
+
+•	Bartłomiej Arkita
+•	Łukasz Michalak
+•	Sylwester Swat
 Ogólna charakterystyka
 
 Projekt ten będzie miniaturowym streszczeniem popularnej gry Gothic. Miniaturowym – gdyż gra będzie odbywała się na mapie i w sposób symboliczny przedstawiała przebieg akcji. Streszczeniem – gdyż w sposób skrócony i wybiórczy główny bohater – Bezimienny – przeżyje po raz kolejny swoje przygody. 
 Królestwo Myrtany zjednoczone pod berłem króla Rhobara II. Podczas długich lat swego panowania Rhobar zdołał pokonać wszystkich wrogów królestwa - oprócz jednego... Wojna z orkami była niezwykle kosztowna, a cenę za nią miała ponieść niewielka grupa skazańców. Król potrzebował mieczy i tarcz dla swego wojska, toteż wkrótce każdy przestępca, niezależnie od występku jaki popełnił, zmuszany był do pracy w kopalniach rudy w Khorinis. Aby uniemożliwić im ucieczkę, król wysłał swych najpotężniejszych magów, by ci otoczyli całą dolinę czarodziejską barierą. A ja, byłem jednym z nich... Niespodziewanie coś zakłóciło delikatną strukturę zaklęcia i... zostaliśmy uwięzieni przez nasze własne dzieło. Więźniowie błyskawicznie wykorzystali moment konsternacji. Khorinis, wraz ze wszystkimi swymi  kopalniami, znajdowała się teraz w rękach więźniów. Król nie miał wyboru – musiał negocjować. Potrzebował rudy. Miesiąc po miesiącu król dostarczał więźniom wszystkiego, czego potrzebowali. Miesiąc po miesiącu otrzymywał od nich nowy ładunek cennej rudy. Aż do dziś. Na skraju urwiska sprowadzono kolejnego więźnia. Nie wiedział co go czeka, a to właśnie on - miał wszystko odmienić.
 Wspomnienia Xardasa
- 
+
+Nasz bohater znajduje się w niezwykle niebezpiecznym świecie, toteż pierwszym krokiem w kolonii będzie przystosowanie się do nowych warunków. Do wyboru ma dołączenie do jednego z trzech obozów: Starego Obozu, Nowego Obozu i Obozu na Bagnie. Aby któryś z obozów zechciał go przyjąć, Bezimienny będzie musiał zagłębić się w polityczne i handlowe zależności w kolonii, aby zjednać sobie najważniejsze osoby w obozach. Dzięki przychylności Cieni w Starym Obozie, Guru w Bractwie lub Szkodników w Nowym Obozie, zyska protekcję i pomoc danej społeczności.
+Gdy już nasz bohater zadomowi się na dobre pod barierą, otrzyma pierwsze ważne zadanie: pozbycie się pełzaczy ze Starej Kopalni – ogromnych insektów, które przeszkadzają w wydobyciu niezwykle potrzebnej magicznej rudy, i które dostarczają wydzieliny, wykorzystywanej w Obozie Bractwa do seansów spirytualistycznych. Pozbycie się ich królowej będzie wielkim wyczynem Bezimiennego, dzięki czemu zyska on wdzięczność całej kolonii. Dzięki silnej wydzielinie z jaj pełzaczy w Obozie na Bagnie zostanie przeprowadzone wielkie przyzwanie Śniącego - wyznawanego przez nich boga, który w wizjach obiecał wyzwolić ich spod panowania magnatów oraz zniszczyć magiczną barierę. W trakcie przywołania okazuje się, że odpowiedzi należy szukać na starym cmentarzysku orków.
+W trakcie przeszukiwania orkowych katakumb naszego bohatera czeka ciężka walka. Okazuje się, że Śniący jest tak naprawdę starożytnym demonem, który próbuje powrócić do świata ludzi. Na dodatek duchowy przywódca Obozu na Bagnie pod wpływem wizji w trakcie przywołania umiera. Bezimienny musi szybko znaleźć ziele uzdrawiające dla niego, niestety nic to nie daje. 
+W obliczu nowej sytuacji Obóz Bractwa pokłada nadzieję w Nowym Obozie i Magach Wody, którzy mają pomysł, aby wysadzić magiczną barierę za pomocą energii magicznej rudy. Nasz bohater ma za zadanie odnalezienie 5 kamieni ogniskujących – starożytnych artefaktów, rozsianych po całej kolonii, potrzebnych do skumulowania energii magicznej rudy. Zdobycie ich będzie nie lada wyczynem.
+Mając już wszystko, Magowie Wody mogliby przystąpić do wysadzenia bariery, jednakże swoją nadzieję pokładają w jeszcze jednej rzeczy – pomocy Xardasa, trzynastego maga uczestniczącego w tworzeniu bariery, który porzucił życie w obozie i został samotnikiem w swojej wieży na terytorium orków. On jako jedyny posiada wiedzę i umiejętności potrzebne do tak wielkiej operacji. Jednak po odnalezieniu go okazuje się, że starania Magów Wody są bezzasadne, gdyż prawdziwym powodem wymknięcia się bariery spod kontroli jest istnienie potężnego starożytnego demona, będącego obiektem kultu orków, a którego moc zasila energię bariery. Dawno temu został uśpiony i uwięziony w swojej świątyni, aby nie stanowił już więcej zagrożenia. Orkowie nazywali go Krushak, natomiast ludziom objawił się jako... Śniący. Wszystko to było częścią jego planu, aby mógł się uwolnić poprzez naiwność ludzi z Obozu na Bagnie. Zatem nasz bohater otrzymuje kolejne zadanie: pokonanie Śniącego. Jednak aby to zrobić musi wejść do miasta orków, z którymi walka w ich ogromnej przewadze liczebnej byłaby niezwykle trudna. Musi wtem odnaleźć cywilizowanego orkowego szamana, który sporządzi dla niego Ulu-Mulu – znak przyjaźni, potężną broń świadczącą o sile wojownika, dzięki czemu orkowie będą darzyć go szacunkiem i nie zaatakują go. Kolejną rzeczą jest przygotowanie się bojowe do walki – zaopatrzenie się w potężne artefakty: zbroję i oręż, o których Xardas powie nam, gdzie ich szukać.
+Przygotowany do walki, Bezimienny musi udać się do Świątyni Śniącego i ostatecznie zakończyć jego knowania. Po drodze napotka jego sługi, aby w ostateczności zmierzyć się i z nim. Koniec końców uda się wysłać demona w zaświaty do innego wymiaru. Tak kończy się gra Gothic.
 Założenia projektu
 
-Świat gry przedstawiony zostanie na mapach: głównej mapie świata oraz wybranych lokacji (Stary Obóz, Nowy Obóz, Obóz na Bagnie, Stara Kopalnia), po których główny bohater będzie się przemieszczał. Pod mapą umieszczone zostanie pole tekstowe do wydawania poleceń w języku naturalnym. Po prawej stronie mapy znajdować się będzie panel informacyjny ze statystykami, dialogami itp. Bohater będzie mógł poruszać się po mapie poleceniami typu: Up, Down, Left, Right oraz także za pomocą poleceń skonkretyzowanych, typu: Go to Old Camp, Go to Diego.  W interakcji z NPC-tami, Bezimienny będzie otrzymywał kolejne misje, uczył się nowych umiejętności, handlował lub wypytywał o dodatkowe informacje. Walki z przeciwnikami i zwierzętami będą miały charakter symboliczny, sprowadzający się np. do wyboru broni i porównywania statystyk. 
+Świat gry przedstawiony zostanie na mapach: głównej mapie świata oraz wybranych lokacji (Stary Obóz, Nowy Obóz, Obóz na Bagnie, Stara Kopalnia), po których główny bohater będzie się przemieszczał. Pod mapą umieszczone zostanie pole tekstowe do wydawania poleceń w języku naturalnym. Po prawej stronie mapy znajdować się będzie panel informacyjny ze statystykami, dialogami itp. Bohater będzie mógł poruszać się po mapie poleceniami typu: Up, Down, Left, Right oraz także za pomocą poleceń skonkretyzowanych, typu: Go to Old Camp, Go to Diego.  W interakcji z NPC-tami, Bezimienny będzie otrzymywał kolejne misje, uczył się nowych umiejętności, handlował lub wypytywał o dodatkowe informacje. 
+
+ 
+Rysunek nr 1. Wygląd głównego okna gry.
+
+Opis funkcjonalności
+
+Główny bohater porusza się po mapie poleceniami typu: move left, move right, move up, move down. Można również natychmiastowo pokonywać dłuższe dystanse do konkretnych lokacji, np. go to Old Camp, go to Swamp Camp lub do postaci/obiektów w grze, np. go to Diego, find Mordrag. W trakcie przemierzania świata, ważną informacją jest to, co się znajduje wokół Bezimiennego, zatem musi mieć on możliwość rozejrzenia się (  look around  ). Wyświetli się wtedy lista obiektów, stworów itp. znajdujących się w bezpośredniej bliskości bohatera. Itemy do noszenia można podnieść ( pick up ). W przypadku posiadania zbyt wielu itemów konieczne będzie pozbycie się części z nich. Aby dowiedzieć się szczegółowych danych o statystykach bohatera, misjach lub ekwipunku można zadać polecania typu: show statistics, show quests/missions, show equipment. W ostatnim przypadku otrzymamy listę posiadanych przedmiotów i wtedy też będziemy mogli pozbyć się części z nich upuszczając je na ziemię ( drop ). Wśród obiektów, które może spotkać Bezimienny na swojej drodze są między innymi: skrzynie, które można otworzyć ( open chest ), a w przypadku wymagania klucza i jego braku otrzymamy informację o tej konieczności; łóżka, na którym można się przespać ( go sleep ); kocioł, gdzie można ugotować potrawkę z chrząszcza ( cook stew ) i nie tylko... oraz patelnię, na której można usmażyć mięso ( fry/cook meat ). Oczywiście w przypadku braku składników ( surowego mięsa lub chrząszcza ) otrzymamy stosowny komunikat o niemożności wykonania polecenia.
+Rozglądając się, nasz bohater dowie się także o stworach, które czają się na jego drodze. Może je zaatakować ( fight/attack ) lub uciec ( escape ), gdy zostaniemy poinformowani, że to one próbują nas zaatakować, lecz ucieczka nie zawsze może się udać. Walka odbywa się w nowym oknie i ma charakter turowy – na zmianę wymienia są ciosy, a gracz decyduje, czy zaatakować mieczem ( hit ), strzelić z łuku/kuszy ( shoot ) czy rzucić czar. W przypadku dwóch pierwszych, używane są domyślne bronie wybrane wcześniej z listy ekwipunku ( use nazwa_przedmiotu ). Natomiast w przypadku czaru, bohater za każdym razem może wybrać, jakie zaklęcie chce użyć ( cast nazwa_zaklęcia lub zwykłe cast spell, gdy chcemy użyć zaklęcia domyślnego ). Również swój ruch może poświęcić na uzupełnienie życia/many, pijąc lub jedząc coś z ekwipunku ( patrz niżej ). Istnieje również możliwość wyboru automatycznej walki z nastawieniem na jeden typ ataku, np. ( auto fight by sword ).
+Ważnym elementem gry jest również interakcja z postaciami ludzkimi ( i nie tylko ludzkimi ). Aby porozmawiać i dowiedzieć się, co mają nam do powiedzenia NPC’ty, wystarczy użyć komendy talk to imię_NPC. Można również zaproponować handel ( trade with imię_NPC ), lecz nie zawsze musi się NPC na niego zgodzić. Gdy uzyskamy zgodę, wyświetli się lista jego towarów oraz naszego ekwipunku. Gdy mamy wystarczająco dużo bryłek rudy, możemy kupić coś ( buy nazwa_przedmiotu ), w przeciwnym wypadku transakcja się nie powiedzie. Możemy również wymienić nasze przedmioty na rudę sprzedając je (  sell nazwa_przedmiotu ). W przypadku wykonywania misji, nawiązanie rozmowy wiązać się będzie automatycznie z wykonaniem określonej w zadaniu akcji, na przykład oddanie listu.
+Przedmioty dzielą się na następujące kategorie: Bronie, Łuki/Kusze, Zbroje, Zaklęcia, Artykuły spożywcze oraz Pozostałe. Każdy przedmiot posiada wyżej wspomniane związane z nim czynności: podnoszenie, upuszczanie, sprzedawania, kupowanie. Rzeczy z wszystkich kategorii poza ostatnią posiadają również możliwość noszenia/używania ich domyślnie w konkretnych sytuacjach, np. use pick, use long bow, wear/use water mage armor, use fire ball, use bread. Będzie to skutkowało używaniem wybranej broni w walce, użyciem zaklęcia, gdy nie skonkretyzowaliśmy rzucanego czaru, noszeniem zbroi oraz jedzeniem/piciem wybranej rzeczy, którą wskażemy jako domyślna. Artykuły spożywcze służą do uzupełnienia, a nawet podniesienia statystyk bohatera. Gdy posiadamy konkretną rzecz w ekwipunku możemy ją zjeść ( eat nazwa ) lub wypić ( drink nazwa ), w przeciwnym wypadku polecenie nie zostanie wykonane. Samo eat/drink skutkować będzie zjedzeniem/wypiciem domyślnej rzeczy.
+Każdy przedmiot posiada statystyki  typu obrażenia, wymagana siła, zręczność, ilość przywracanego życia/many. Można je sprawdzić pisząc np. show weapon statistics.
+Lista przedmiotów
+
+ 
+Bronie:
+•	Kilof
+•	Zardzewiały topór
+•	Zardzewiały miecz
+•	Ząb kopacza
+•	Niewykończony miecz
+•	Miecz Świstaka
+•	Miecz bojowy
+•	Miecz sędziego
+•	Krush Varrok
+•	Miecz strażnika świątynnego
+•	Krzyk wojownika
+•	Topór Gorna
+•	Miecz nadzorcy
+•	Uriziel
+	
+Łuki/Kusze:
+
+•	Krótki  łuk
+•	Refleksyjny  łuk
+•	Długi  łuk
+•	Łuk Diego
+•	Lekka kusza
+•	Ciężka kusza
+•	Kusza wojenna
+•	Kusza Szakala
+	
+Zaklęcia:
+
+•	Ognisty pocisk
+•	Ognista kula
+•	Deszcz ognia
+•	Sopel  lodu
+•	Bryła lodu	
+•	Lodowa fala
+•	Sen
+•	Światło
+•	Uderzenie burzy
+•	Pirokineza
+•	Tchnienie śmierci
+•	Fala śmierci Uriziela
+•	Przyzwanie demona
+
+Zbroje:
+
+•	Spodnie Kopacza
+•	Przepaska Nowicjusza
+•	Zbroja Cienia
+•	Zbroja Nowicjusza
+•	Strój Szkodnika
+•	Zbroja Strażnika 
+•	Zbroja  Świątynna
+•	Zbroja Najemnika
+•	Szata Ognia
+•	Szata Guru
+•	Szata Wody
+•	Zbroja z pancerzy pełzaczy
+•	Starożytna zbroja magiczna
+
+Artykuły spożywcze:
+
+•	Chleb
+•	Ser
+•	Ryż
+•	Piwo
+•	Ryżówka
+•	Surowe mięso
+•	Smażone mięso
+•	Maliny
+•	Poziomki
+•	Krucze ziele
+•	Serafis
+•	Orkowe ziele
+•	Pianka
+•	Kocianka
+•	Piekielnik
+•	Gorzki chleb
+•	Mięso Kopacza
+•	Mięso z chrząszcza
+•	Potrawkaz chrząszcza
+•	Potrawka z pełzacza
+•	Wino
+•	Woda
+•	Ziele uzdrawiające
+•	Eliksir życia
+•	Eliksir many
+
+Pozostałe:
+
+•	Bryłki rudy
+•	Pochodnia
+•	Trofeum
+•	Itemy questowe
+ 
+
+  
+Rysunek nr 2. Relacje między obiektami.
+ 
+Instrukcje Użytkownika
+
+Do przemieszczania naszego bohatera po Górniczej Dolinie będziemy potrzebowali szeregu instrukcji pisemnych, umożliwiających nam przemieszczanie się oraz interakcję z otaczającym nas światem. Są to:
+•	move (right, left, up, down) - poruszanie sie w danym kierunku,
+•	go to - automatyczne przejście do danej lokacji, np. go to swamp camp,
+•	look around - rozglądanie się,
+•	find -  znajdowanie postaci lub obiektów, np. find Diego,
+•	pick up - podniesienie przedmiotu, np. pick up short sword,
+•	show - ukazanie informacji o statystykach bohatera, misjach i ekwipunku, np. show statistics, show quests/missions, show equipment,
+•	open - otwieranie, np. open door, open chest, 
+•	drop - upuszczenie przedmiotu, np. drop short sword,
+•	go sleep - odpoczynek,
+•	cook/fry - gotowanie, np. cook stew, fry meat,
+•	fight/attack - zaatakowanie przeciwnika, 
+•	escape - ucieczka z pola walki,
+•	hit - walka w zwarciu,
+•	shoot - walka bronią dystansową, 
+•	cast lub cast nazwa_zaklęcia z ekwipunku - rzucenie zaklęcia domyślnego czyli jakiego, lub wyznaczonego przez gracza, np. cast fireball,
+•	autofight by - walka automatyczna za pomocą wyznaczonego typu broni, np. autofight by sword,
+•	talk to - rozpoczęcie rozmowy z NPC, np. talk to Diego, 
+•	trade with - rozpoczęcie handlu z danym NPC, np. trade with Mordrag, 
+•	buy - zakup przedmiotu, np. buy bread, 
+•	sell - sprzedaż przedmiotu, np. sell bread,
+•	use - użycie przedmiotu,
+•	eat/drink - jedzenie/picie, np. eat bread (bez podania nazwy przedmiotu zjedzenie, wypicie domyślnej rzeczy),czyli jakiej?
+•	show weapon statistics - pokazuje statystyki broni. jakiej broni? a może pancerza itd.? 
 
 Wstępny pomysł implementacji
 
-Projekt stworzony zostanie w języku Java, korzystając ze środowiska NetBeans. Klasa główna Gothic będzie przede wszystkim zawierać kontener z obiektami istniejącymi w grze, „tablicę rejestrów” informujących o zmianie stanów gry, obsługiwać poszczególne wątki oraz wyświetlać świat i interfejs użytkownika. W tym celu użyta zostanie biblioteka Swing, a klasa Gothic będzie rozszerzać klasę JPanel. Kolejna klasa, Order zajmować się będzie obsługą poleceń użytkownika i wywoływaniem odpowiednich funkcji obiektów istniejących w grze. Obiektami w grze będą głównie NPC i moby, które zostaną wygenerowane na początku gry. Oba typy obiektów będą rozszerzały klasę Character, z tym że NPC-ty będą także miały nakładkę w postaci typu walki: wręcz, łukiem/kuszą lub magią.
+Projekt stworzony zostanie w języku Java, korzystając ze środowiska NetBeans. Klasa głównaGothic będzie przede wszystkim zawierać kontener z obiektami istniejącymi w grze, poszczególne wątki oraz wyświetlać świat i interfejs użytkownika. W tym celu użyta zostanie biblioteka Swing, a klasa Gothic będzie rozszerzać klasę JPanel. Kolejna klasa, Order zajmować się będzie obsługą poleceń użytkownika i wywoływaniem odpowiednich funkcji obiektów istniejących w grze. Obiektami w grze będą głównie NPC i moby, które zostaną wygenerowane na początku gry. Oba typy obiektów będą rozszerzały klasę Character, z tym że NPC-ty będą także miały nakładkę w postaci typu walki: wręcz, łukiem/kuszą lub magią.
+
+Podział projektu na moduły
+
+Projekt Gothic będzie się składał z 4 głównych modułów:
+1.	Moduł graficzny – moduł odpowiedzialny za grafikę gry.
+2.	Moduł językowy – moduł odpowiedzialny za przyjmowanie i przetwarzanie poleceń użytkownika
+3.	Moduł wykonawczy – moduł odpowiedzialny za wykonywanie czynności.
+4.	Moduł statystyczny – moduł odpowiadający za zapamiętywanie stanu gry, informacji o postaciach itp.
+Każdy z czterech modułów zawiera pewne pod-moduły odpowiedzialne za charakterystyczne dla siebie czynności.
+Moduł graficzny
+Będzie obsługiwał cały interfejs gry, a więc:
+•	Mapy, po których poruszać się będzie główny bohater;
+•	Pole tekstowe do wpisywania poleceń w języku naturalnym;
+•	Panel z informacjami pisemnymi na temat świata i wykonywanych poleceń.
+Oparty będzie na technologii Java Swing. Klasa ta będzie rozszerzeniem klasy JPanel, na którym będzie malowała w pętli while zmiany w świecie. Podstawową sprawą jest komunikacja tego modułu z modułem statystycznym, z którego czerpie informację o aktualnym stanie gry.
+Moduł językowy
+Najważniejszym modułem z punktu widzenia komunikacji człowieka z grą – komputerem jest moduł językowy. Składa się on z 4 wyróżniających się podzespołów.
+Pierwszym elementem jest moduł przyjmujący dane od użytkownika. Jego zadaniem jest pobranie danych w postaci tekstu oraz wysłanie ich do odpowiedniego obiektu przetwarzającego – to, do którego obiektu, zostaje rozstrzygnięte na etapie dopasowania( za to jest odpowiedzialny podzespół drugi). Istnieje wiele obiektów przetwarzających – każdy z nich jest odpowiedzialny za innego rodzaju czynność, o wykonanie której prosi gracz(np. obiekt odpowiedzialny za wydanie komendy do walki, ruchu, jedzenia…). 
+Drugim elementem jest podzespół odpowiadający za dopasowanie polecenia użytkownika do odpowiedniego obiektu przetwarzającego. Przyjmuje on dane(tekst) od modułu pierwszego i w odpowiedzi zwraca dany obiekt przetwarzający – to który, zależy od zgodności słów i fraz polecenia z bazą słów i fraz charakterystycznych dla poszczególnych obiektów.
+Trzecim elementem jest moduł wybierający na podstawie podanych przez gracza informacji i rozkazów obiekt, na rzecz którego dana czynność ma zostać wykonana. W swej strukturze moduł jest podobny do modułu drugiego, są jednak nieznaczne różnice umożliwiające  trafniejszy wybór ‘celu’.
+Czwartym i zarazem ostatnim podzespołem jest zbiór pomniejszych obiektów, których zadaniem jest przekazanie do funkcji wykonawczych dane dotyczące typu akcji do wykonania oraz obiektu z daną akcją powiązanego. Od modułu drugiego pobiera rodzaj akcji (obiekt przetwarzający), od trzeciego zaś obiekt-cel. Tak otrzymaną parę przesyła w odpowiednio opakowanej formie do funkcji wykonawczych.
+Moduł wykonawczy
+Odpowiada za wykonywanie poleceń, które z języka naturalnego zostały przetworzone przez moduł językowy. Moduł ten musi pobrać referencję do odpowiedniego obiektu z moduły statystycznego i wywołać odpowiednią funkcję. Ważne jest, aby zadania realizowane przez moduł wykonawczy odbywały się w osobnym wątku, aby nie doprowadzić do zawieszenia pracy programu w przypadku ewentualnych błędów lub skomplikowanych zadań.
+Moduł statystyczny
+Jest główną bazą danych zawierającą wszystkie informacje o świecie. Posiada kontener zawierający wszystkie obiekty występujące w grze oraz bazę słów kluczowych, z której korzysta moduł językowy. Jego zasób jest głównie inicjowany na początku gry – potem pracuje się głównie na obiektach już istniejących, jednakże nie wyklucza się drobnych odstępstw od tej zasady. Kontener obiektów jest oczywiście indeksowany po odpowiednich słowach kluczowych, aby łatwo było znaleźć właściwy obiekt przez moduł językowy. Również, co jest ważne, poszczególne obiekty wpływające na siebie również korzystają z dostępu do modułu statycznego.
+Zależności między modułami
+
+Moduł graficzny:
+•	Pobiera informacje z modułu statystycznego;
+•	Wysyła informacje z pola poleceń w języku naturalnym do modułu językowego.
+Moduł językowy:
+•	Pobiera informacje z pola poleceń w języku naturalnym z modułu graficznego;
+•	Korzysta z bazy słów kluczowych modułu statystycznego;
+•	Również z modułu statystycznego pobiera referencję do odpowiednich obiektów.
+Moduł wykonawczy:
+•	Wykonuje odpowiednie akcje na obiektach, zgodnie z wskazaniami modułu językowego;
+Moduł statystyczny:
+•	Udostępnia bazę słów kluczowych i obiektów pozostałym modułom.
+
