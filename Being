@@ -2,25 +2,55 @@
 package gothic;
 
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+
 public class Being {
     
     int hp;
     int strength;
     int dexterity;
     int id;
-    boolean exist;
-    String name;
-    Location location;
+    boolean exist = true;
+    public String name;
+    public Location loc;
     
+    public Equip eq;
+    
+    public BufferedImage image;
+    boolean ifimage = true;
     // weapon weap;
     
-    Location get_location() { return location; }
+    Being(int hp, String name, Location location, String sciezka)
+    {
+       this.hp = hp;
+       this.name = name;
+       this.loc = location;
+        
+       if( sciezka.equals("false") )
+           ifimage = false;
+       else
+       {
+           File imageFile = new File(sciezka);
+            try {
+                image = ImageIO.read(imageFile);
+            } catch (IOException e) {
+                System.err.println("Blad odczytu obrazka");
+                e.printStackTrace();
+            }
+       }
+        
+    }
+    
+    public Location get_location() { return loc; }
     
     
     
-    void trade(){}
-    void fight(){}
-    void quests(){}
+    public void trade(){}
+    public void fight(){}
+    public void quests(){}
     
     
 }
