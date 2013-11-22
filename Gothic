@@ -23,141 +23,106 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
-public class Gothic extends JPanel implements Runnable  {
+public class Gothic extends JPanel implements Runnable, ActionListener  {
 
-    private Kolonia world;
-    
     private JFrame okno;
+    public int FrameMarginWidth = 100;
+    public int FrameMarginHeight = 100;
     
     private Thread game;
+    BufferedImage map;
     
-    private BufferedImage map;
-    private BufferedImage bezi;
-    private int xbezi = 420;
-    private int ybezi = 130;
+    private Bezi bezi = new Bezi();
     
-    private JTextField order = new JTextField("What you want to do?");
-     
+    private List NPC;
+    private List ObjectsList;
+    
+    private JTextField order = new JTextField("");
+    private JButton send = new JButton("Send");
+    boolean info = false;
+    boolean pickup = false;
+    boolean paintEq = false;
+    
     public static void main(String[] args) {
-        Gothic game = new Gothic();
-        game.init_world();
+        Gothic Got = new Gothic();
     }
     
     public Gothic()
     {
         super();
+        this.NPC = new ArrayList();
+        this.ObjectsList = new ArrayList();
+        init_world();
     }
     
     @Override
     public void run(){
-        game();
-        repaint();
+          game();
+  //      repaint();
     }
 
     private void init_world(){
 
-        world = new Kolonia();
         
-       Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
-       okno = new JFrame(".: Gothic :.");       
+      Dimension d = new Dimension(Toolkit.getDefaultToolkit().getScreenSize());
+      okno = new JFrame(".: Gothic :.");       
     
-       this.setBounds(0,0,d.width,d.height-30);
-       setSize(new Dimension(d.width,d.height-30));
-       setLayout(null);
-       okno.setBounds(0,0,d.width,d.height-30);
-       okno.setVisible(true);
-       okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//DO_NOTHING_ON_CLOSE);
-       okno.setResizable(false);
-       okno.add(this);
-       setBackground( Color.BLACK );
+      this.setBounds(0,0,d.width,d.height-30);
+      setSize(new Dimension(d.width,d.height-30));
+      setLayout(null);
+      okno.setBounds(0,0,d.width,d.height-30);
+      okno.setVisible(true);
+      okno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//DO_NOTHING_ON_CLOSE);
+      okno.setResizable(false);
+      okno.add(this);
+      setBackground( Color.BLACK );
 
-       
-       game = new Thread(this);
-       
-       File imageFile = new File("mapa.jpg");
-       File bezzi = new File("bezi2.png");
-        try {
-            map = ImageIO.read(imageFile);
-            bezi = ImageIO.read(bezzi);
-        } catch (IOException e) {
-            System.err.println("Blad odczytu obrazka");
-            e.printStackTrace();
-        }
+      game = new Thread(this);
         
-      order.setBounds(100, 700, 700, 50);
+      order.setBounds(FrameMarginWidth, 700, 700, 50);
       add(order);
+      send.setBounds(810,700,100,50);
+      send.addActionListener(this);
+      add(send);
+      
+      
+      NPC.add(new Being(100,"Diego",new Location(278,138,"oldcamp"),"false"));
+      NPC.add(new Being(100,"Thorus",new Location(300,176,"oldcamp"),"false"));
+      NPC.add(new Being(100,"Gomez",new Location(343,331,"oldcamp"),"false"));
+      NPC.add(new Being(100,"Mordrag",new Location(510,354,"oldcamp"),"false"));
+      NPC.add(new Being(100,"Scatty",new Location(512,174,"oldcamp"),"false"));
+      NPC.add(new Being(100,"Fletcher",new Location(552,154,"oldcamp"),"false"));
+      
+      Random random = new Random();
+      
+      for(int i=0; i<100; i++)
+      {
+          ObjectsList.add( new Objects("Raspberry", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Healing Herbs", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Orc Leaf", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Hell Mushroom", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Seraphis", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Beer", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+      }
+      for(int i=0; i<10; i++)
+      {
+          ObjectsList.add( new Objects("Rusty Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Pickaxe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Withered Axe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          ObjectsList.add( new Objects("Crude Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));          
+      }
+      
       run();
     }
     
     private void game(){
         while (okno.isVisible()) {
-     //       long startTime = System.currentTimeMillis();
-            if( (order.getText()).equals("Old Camp") )
-            {
-                File imageFile = new File("oldcamp.jpg");
-                try {
-                    map = ImageIO.read(imageFile);
-                } catch (IOException e) {
-                    System.err.println("Blad odczytu obrazka");
-                    e.printStackTrace();
-            order.setText("What you want to do?");   
-            }
-            }
-            else if( (order.getText()).equals("New Camp") )
-            {
-                File imageFile = new File("newcamp.jpg");
-                try {
-                    map = ImageIO.read(imageFile);
-                } catch (IOException e) {
-                    System.err.println("Blad odczytu obrazka");
-                    e.printStackTrace();
-            order.setText("What you want to do?");   
-            }
-            }  
-            else if( (order.getText()).equals("Swamp Camp") )
-            {
-                File imageFile = new File("swampcamp.jpg");
-                try {
-                    map = ImageIO.read(imageFile);
-                } catch (IOException e) {
-                    System.err.println("Blad odczytu obrazka");
-                    e.printStackTrace();
-            order.setText("What you want to do?");   
-            }
-            }       
-            else if( (order.getText()).equals("World map") )
-            {
-                File imageFile = new File("mapa.jpg");
-                try {
-                    map = ImageIO.read(imageFile);
-                } catch (IOException e) {
-                    System.err.println("Blad odczytu obrazka");
-                    e.printStackTrace();
-            order.setText("What you want to do?");   
-            }
-            }       
-            else if( (order.getText()).equals("Right") )
-            {
-                xbezi += 10;     
-            order.setText("What you want to do?");   
-            }
-            else if( (order.getText()).equals("Left") )
-            {
-                xbezi -= 10;     
-            order.setText("What you want to do?");   
-            }
-            else if( (order.getText()).equals("Up") )
-            {
-                ybezi -= 10;    
-            order.setText("What you want to do?");   
-            } 
-            else if( (order.getText()).equals("Down") )
-            {
-                ybezi += 10;
-            order.setText("What you want to do?");   
-            }
-            repaint();
+
+     //       repaint();
         } 
         okno.setVisible(false);
     }
@@ -165,8 +130,127 @@ public class Gothic extends JPanel implements Runnable  {
     @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-        g2d.drawImage(map, 100, 100, this);
-        g2d.drawImage(bezi, xbezi, ybezi, this);
+        g2d.setColor(Color.BLACK);
+        g2d.fillRect(0,0,getWidth(),getHeight());
+       File imageFile = new File(bezi.loc.getLocationName()+".jpg");
+        try {
+            map = ImageIO.read(imageFile);
+            g2d.drawImage(map, FrameMarginWidth, FrameMarginHeight, this);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
         
+        g2d.setColor(Color.WHITE);
+        g2d.drawRect(map.getWidth() + FrameMarginHeight + 10, FrameMarginHeight, 130, map.getHeight());
+        
+        g2d.drawImage(bezi.image, bezi.loc.getX() + FrameMarginWidth, bezi.loc.getY() + FrameMarginHeight, this);
+        
+        
+        paintNPC(g2d);
+        if( info )
+        {
+            paintObjects(g2d);
+        }
+        else
+        if( paintEq )
+        {
+            int j=1;
+            g2d.setColor(Color.WHITE);
+            g2d.drawString("Your equipment:", map.getWidth() + FrameMarginWidth + 15, FrameMarginHeight + 30);
+            for(int i=0; i<bezi.eq.ObjectsList.size();i++)
+            {
+                Objects ob = (Objects)bezi.eq.ObjectsList.get(i);
+               // if( ob.loc.getLocationName().equals(bezi.loc.getLocationName() ) && MOD(ob.loc.getX() - bezi.loc.getX()) <= 18 && MOD(ob.loc.getY() - bezi.loc.getY()) <= 17  )
+                    g2d.drawString(ob.name, map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
+            }
+        }
     }
+    
+    void paintNPC(Graphics2D g2d )
+    {
+        for(int i=0; i<NPC.size(); i++)
+        {
+            Being ob = (Being)NPC.get(i);
+            if( ob.loc.getLocationName().equals(bezi.loc.getLocationName()) )
+            {
+                g2d.setColor(Color.darkGray);
+                g2d.fillRect(ob.loc.getX() + FrameMarginWidth -25 ,ob.loc.getY() + FrameMarginHeight - 15,50,12);
+                g2d.setColor(Color.WHITE);
+                g2d.drawString(ob.name, ob.loc.getX() + FrameMarginWidth -23 ,ob.loc.getY() + FrameMarginHeight -5 );
+            }
+        }
+    }
+    
+    void paintObjects(Graphics2D g2d )
+    {
+ //       System.out.format("Jestem tutaj");
+        int j=1;
+        g2d.setColor(Color.WHITE);
+        g2d.drawString("What you see around:", map.getWidth() + FrameMarginWidth + 15, FrameMarginHeight + 30);
+        for(int i=0; i<ObjectsList.size();i++)
+        {
+            Objects ob = (Objects)ObjectsList.get(i);
+            if( ob.exist )
+            if( ob.loc.getLocationName().equals(bezi.loc.getLocationName() ) && MOD(ob.loc.getX() - bezi.loc.getX()) <= 18 && MOD(ob.loc.getY() - bezi.loc.getY()) <= 17  )
+                g2d.drawString(ob.name, map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
+        }
+    }
+    
+    
+    
+    int MOD(int x)
+    {
+        if( x < 0 ) return -x;
+        return x;
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if( source == send )
+        {
+            if( pickup )
+            {
+                Objects ob = null;
+                for(int i=0; i<ObjectsList.size(); i++)
+                {
+                    ob = (Objects)ObjectsList.get(i);
+                    if( ob.name.equals(order.getText()))
+                    {
+                        bezi.eq.add(ob);
+                        ob.exist = false;
+                        break;
+                    }
+                }
+                pickup = false;
+            }
+            else
+            {
+                pickup = false;
+            if( order.getText().equals("look around"))
+            {
+                info = true;
+                repaint();
+                order.setText("");
+            }
+            else
+            if( order.getText().equals("pick up"))
+            {
+                pickup = true;
+            }
+            else if( order.getText().equals("show eq") )
+                paintEq = true;
+            else
+            {
+                info = paintEq = false;
+                bezi.move(order.getText() );
+                order.setText(""); 
+                repaint();
+            }
+                
+            }
+        }
+    }
+    
 }
