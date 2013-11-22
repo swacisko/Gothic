@@ -1,0 +1,34 @@
+
+package gothic;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Equip {
+    
+    
+    public List ObjectsList;
+    
+    public Equip()
+    {
+        this.ObjectsList = new ArrayList();
+    }
+    
+    public void add(Objects ob)
+    {
+        ObjectsList.add(ob);
+    }
+    
+    public Objects get(String name)
+    {
+        for(int i=0; i<ObjectsList.size(); i++)
+        {
+            Objects ob = (Objects)(ObjectsList.get(i));
+            if( ob.name.equals(name) )
+                return ob;
+        }
+        return null;
+    }
+    
+}
