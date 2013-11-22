@@ -1,0 +1,34 @@
+
+package gothic;
+
+
+public class Bezi extends Being{
+    
+    public Bezi()
+    {
+        super(9999, "Bezimienny", new Location(370-20,90-80,"world"),"Bezi2.png");
+    }
+    
+    public void move(String direct)
+    {
+        if( direct.equalsIgnoreCase("Left") )
+            loc.setCoord( loc.getX() - 35, loc.getY() );
+        else if( direct.equals("Right") )
+            loc.setCoord( loc.getX() + 35, loc.getY() );
+        else if( direct.equals("Up") )
+            loc.setCoord( loc.getX(), loc.getY() -34 );
+        else if( direct.equals("Down") )
+            loc.setCoord( loc.getX() , loc.getY() +34);
+        else if( direct.equals("Old Camp") && !loc.getLocationName().equals("oldcamp") )
+            loc.setLocationName("oldcamp");
+        else if( direct.equals("New Camp") && !loc.getLocationName().equals("newcamp") )
+            loc.setLocationName("newdcamp");
+        else if( direct.equals("Swamp Camp") && !loc.getLocationName().equals("swampcamp") )
+            loc.setLocationName("swampcamp");
+        else if( direct.equals("World") && !loc.getLocationName().equals("world") )
+            loc.setLocationName("world");
+
+    }
+            
+    
+}
