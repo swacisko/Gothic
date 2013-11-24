@@ -1,0 +1,51 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gothic;
+
+/**
+ *
+ * @author E6410
+ */
+public class GameObject {
+    public GameObject( String name, Location l ){
+        loc = l;
+        this.name = name;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public void setName( String name ){
+        this.name = name;
+    }
+    
+    public Location getLocation(){
+        return loc;
+    }
+    public void setLocation( Location l ){
+        loc = l;
+    }
+    
+    public boolean isExist(){
+        return exist;
+    }
+    public void setExist( boolean b ){
+        exist = b;
+    }
+    
+    public boolean findText( String text ){
+        if( text.equalsIgnoreCase( name ) ) return true;
+        else return findTextByDescription( text );
+    }
+    
+    private boolean findTextByDescription( String text ){ // to musi zostac zmienione
+        return description.equalsIgnoreCase( text );
+    }
+    
+    private String name;
+    private Location loc;
+    private String description;
+    private boolean exist = true;
+}
