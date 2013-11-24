@@ -1,12 +1,11 @@
-
 package gothic;
 
 
 public class Location {
     
-    int x;
-    int y;
-    String name;
+    private int x;
+    private int y;
+    private String name;
     
     public Location(int a, int b, String namme )
     {   
@@ -21,7 +20,7 @@ public class Location {
         y = b;
     }
     
-    public void setLocation(String namme)
+    public void setLocationName(String namme)
     {
         name = namme;
     }
@@ -30,6 +29,6 @@ public class Location {
     
     public int getY() { return y; }
     
-    public String getLocation() { return name; }
+    public String getLocationName() { return name; }
     
 }
