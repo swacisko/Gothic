@@ -1,0 +1,115 @@
+package gothic;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.lang.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+
+
+public class DataBase {
+    public DataBase(){
+        fillDataBase();    
+    }
+    
+    public void fillDataBase(){
+        
+    }
+}
+
+//******************************************************************** NPC Data Base
+
+class NPCDataBase extends DataBase{
+    public NPCDataBase(){
+        super();
+    }
+    
+    @Override
+    public void fillDataBase(){
+        
+    }
+    
+    public ArrayList<Being> getNPCs(){
+        return npcs;
+    }
+    
+    ArrayList<Being> npcs = new ArrayList<>(100);
+}
+
+//************************************************************************** Objects Data Base
+
+class ObjectsDataBase extends DataBase{
+    public ObjectsDataBase(){
+        super();   
+    }
+    
+    @Override
+    public void fillDataBase(){
+    //     objects.add( new GameObject() );
+    }
+    
+    public ArrayList<GameObject> getObjects(){
+        return objects;
+    }
+    
+    private ArrayList<GameObject> objects = new ArrayList<>(100);
+}
+
+//************************************************************************ UCA Data Base
+
+class UCADataBase extends DataBase{
+    public UCADataBase(){
+        super();
+    }
+    
+    @Override
+    public void fillDataBase(){
+        ucas.add( new NoCommand() );
+        ucas.add( new CookCommand() );
+        ucas.add( new CastCommand() );
+        ucas.add( new DropCommand() );
+        ucas.add( new EatDrinkCommand() );
+        ucas.add( new EscapeCommand() );
+        ucas.add( new LookAroundCommand() );
+        ucas.add( new FightCommand() );
+        ucas.add( new TalkToCommand() );
+        ucas.add( new UseCommand() );
+        ucas.add( new TradeCommand() );
+        ucas.add( new OpenCommand() );
+        ucas.add( new ShowCommand() );
+        ucas.add( new PickCommand() );
+        ucas.add( new GoToCommand() );
+        
+        ucas.trimToSize();        
+    }
+    
+    public ArrayList<UserCommandAction> getUCAs(){
+        return ucas;
+    }
+    
+    private ArrayList<UserCommandAction> ucas = new ArrayList<>(20);
+}
+
+// 
+
+class GeneralDataBase{
+    public GeneralDataBase(){
+        
+    }
+    
+    public ObjectsDataBase getObjectsDataBase(){
+        return odb;
+    }
+    public NPCDataBase getNPCDataBase(){
+        return npcdb;
+    }
+    public UCADataBase getUCADataBase(){
+        return ucadb;
+    }
+    
+    private ObjectsDataBase odb;
+    private NPCDataBase npcdb;
+    private UCADataBase ucadb;    
+}
