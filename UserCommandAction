@@ -8,10 +8,7 @@ import java.lang.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-/**
- *
- * @author swacisko
- */
+
 
 
 public class UserCommandAction extends KeyWords {
@@ -26,14 +23,20 @@ public class UserCommandAction extends KeyWords {
         return new String( commandName );
     }
     
-    public void addProneToActionObject( Object obj ){
+    public void addProneToActionObject( GameObject obj ){
         proneToAction.add( obj );
     }
     
     public void setKeyWords(){}
+    public void writeKeyWords(){ // need it only to check whether KeyWords work
+        ArrayList<String> keyWords = getKeyWords();
+        for( String s : keyWords ){
+            System.out.println( s );
+        }
+    }
     
     private String commandName;    
-    private ArrayList<Object> proneToAction = new ArrayList<>(50); // objects that are associated with action
+    private ArrayList< GameObject > proneToAction = new ArrayList<>(50); // objects that are associated with action
             // e.g Diego is associated with Go To action, Fight Action ...
 }
 
@@ -48,6 +51,7 @@ class FightCommand extends UserCommandAction{
         addKeyWord( "fight" );
         addKeyWord( "kill" );
         addKeyWord( "defeat" );
+        addKeyWord( "attack" );
     }
 }
 
@@ -105,6 +109,201 @@ class PickCommand extends UserCommandAction{
         addKeyWord( "steal" ); // jesli chce cos ukrasc, to jest to rownowazne z akcja PickCommand
     }
 }
+//****************************************************************************** LookAroundCommand
+// klasa LookAroundCommand
+
+class LookAroundCommand extends UserCommandAction{
+    public LookAroundCommand(){
+        super();
+        setCommandName( GothicConstants.LookAroundAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "look around" );
+        addKeyWord( "what is around" );
+        addKeyWord( "show vicinity" );
+        addKeyWord( "show surroundings" );
+    }
+}
+//******************************************************************************TalkToCommand
+// klasa TalkToCommand
+class TalkToCommand extends UserCommandAction{
+    public TalkToCommand(){
+        super();
+        setCommandName( GothicConstants.TalkToAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "talk to" );
+        addKeyWord( "talk with" );
+        addKeyWord( "speak to" );
+        addKeyWord( "chat with" );
+    }
+    
+}
+// klasa TradeCommand
+class TradeCommand extends UserCommandAction{
+    public TradeCommand(){
+        super();
+        setCommandName( GothicConstants.TradeAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "trade" );
+        addKeyWord( "buy" );
+        addKeyWord( "sell" );
+    }
+    
+    
+}
+//******************************************************************************EatDrinkCommand
+// klasa EatDrinkCommand
+class EatDrinkCommand extends UserCommandAction{
+    public EatDrinkCommand(){
+        super();
+        setCommandName( GothicConstants.EatDrinkAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "eat" );
+        addKeyWord( "drink" );
+        addKeyWord( "nourish" );
+        addKeyWord( "consume" );
+        addKeyWord( "dinner" );
+        addKeyWord( "supper" );
+        addKeyWord( "breakfast" );
+    }
+    
+    
+}
+//******************************************************************************ShowCommand
+// klasa ShowCommand
+class ShowCommand extends UserCommandAction{
+    public ShowCommand(){
+        super();
+        setCommandName( GothicConstants.ShowAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "show" );
+        addKeyWord( "display" );
+    }
+}
+// klasa UseCommand - bardzo kontrowersyjna klasa
+class UseCommand extends UserCommandAction{
+    public UseCommand(){
+        super();
+        setCommandName( GothicConstants.UseAction );
+    }
+    
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "use" );
+        addKeyWord( "expolit" );
+    }
+    
+}
+
+//******************************************************************************
+// 
+
+class CastCommand extends UserCommandAction {
+    public CastCommand(){
+        super();
+        setCommandName( GothicConstants.CastAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "cast" );
+    }
+    
+}
+
+//******************************************************************************
+//
+
+class OpenCommand extends UserCommandAction{
+    public OpenCommand(){
+        super();
+        setCommandName( GothicConstants.OpenAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord("open");
+        addKeyWord("unlock");
+    }
+}
+
+//******************************************************************************
+// 
+
+class DropCommand extends UserCommandAction{
+    public DropCommand(){
+        super();
+        setCommandName( GothicConstants.DropAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "drop" );
+        addKeyWord( "throw away" );
+        addKeyWord( "throw out" );
+        addKeyWord( "get rid of" );
+    }
+}
+
+//******************************************************************************
+//
+
+class CookCommand extends UserCommandAction{
+    public CookCommand(){
+        super();
+        setCommandName( GothicConstants.CookAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "cook" );
+        addKeyWord( "fry" );
+        addKeyWord( "bake" );
+    }
+}
+
+//****************************************************************************** 
+//BuyCommand to TradeCommand
+/*
+class BuyCommand extends UserCommandAction{
+    public BuyCommand(){
+        super();
+        setCommandName( GothicConstants.BuyAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "buy" );
+        addKeyWord( "purchase" );
+        addKeyWord( "acquire" );
+    }
+}
+
+//******************************************************************************
+// SellCommand to TradeCommand
+
+class SellCommand extends UserCommandAction{
+    public SellCommand(){
+        super();
+        setCommandName( GothicConstants.SellAction );
+    }
+    @Override
+    public void setKeyWords(){
+        addKeyWord( "sell" );
+    }
+}*/
+
+//******************************************************************************
+// 
+
+
 //*********************************************************************************************************
 /* klasa NoCommand - jesli z polecenia uzytkownika nie zostanie znaleziona zadna inna akcja UCA to zostanie
  * zwrocony egzemplarz NoCommand. Wtedy powinno zostac zwrocone polecenie sparafrazowania polecenia uzytkownika
@@ -114,6 +313,7 @@ class NoCommand extends UserCommandAction{
                                                
     public NoCommand(){
         super();
+        setCommandName( GothicConstants.NoCommand );
     }
     
     public String getRandomAnswer(){
@@ -129,7 +329,8 @@ class NoCommand extends UserCommandAction{
         "That's impossible!",
         "Please tell me what do you mean once again",
         "I have no idea what you are talking about...",
-        "I'm confused...I didn't understand a single word..."
+        "I'm confused...I didn't understand a single word...",
+        "Are you mad?!"
     };
     
 }
