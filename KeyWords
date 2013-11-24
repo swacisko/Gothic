@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gothic;
 
 import javax.swing.*;
@@ -11,20 +8,17 @@ import java.lang.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 
-/**
- *
- * @author s384055
- */
+
 public class KeyWords {    
-    public void addKeyWord( String word ){
-        keyWords.add( new String(word) );
+    public void addKeyWord( String word ){        
+        keyWords.add( new String( word.toLowerCase() ) );
     }    
     public ArrayList<String> getKeyWords(){
         return keyWords;
     }
     public void removeKeyWords( String word ){
         for( String t : keyWords ){
-            if( t.equals( word ) ){
+            if( t.equalsIgnoreCase( word ) ){
                 keyWords.remove( t );
             }
         }
@@ -32,9 +26,9 @@ public class KeyWords {
     
     public ArrayList<String> getSimilarWords( String word ){
         return getSimilarWords( word, 60 );
-    }
-    
+    }    
     public ArrayList<String> getSimilarWords( String word, final int percentSimilarity ){
+        word = word.toLowerCase();
         ArrayList< String > words = new ArrayList<>(10);
         for( String s : keyWords ){
             int length = word.length() < s.length() ? word.length() : s.length();
@@ -53,8 +47,37 @@ public class KeyWords {
         return words;
     }
     
+     
+    
+    public static ArrayList<String> getSeparatedWords( String text ){
+        ArrayList<String> list = new ArrayList<>(10);
+        int p = 0;
+        int q = 0;
+        while( q < text.length() ){
+            if( text.charAt(q) == ' ' ) {
+                list.add( text.substring(p, q)  );                
+                p = q+1;
+            }
+            
+            q++;
+        }
+        
+        list.add( text.substring( p,q ) );
+        list.trimToSize();
+        return list;        
+    }
+    public int getWordCompatibility( String text ){
+        ArrayList<String> list = getSeparatedWords(text);
+        int ile = 0;
+        for( String s : keyWords ){
+            for( String str : list ){
+                if( s.equals( str ) ) ile++;
+            }
+        }        
+        return ile;
+    }
+    
     
     private ArrayList<String> keyWords = new ArrayList<>(20);
 }
-
 
