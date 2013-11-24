@@ -1,0 +1,68 @@
+package gothic;
+
+public class ExecutiveModule {
+    public ExecutiveModule( CommunicationSet set, Bezi bezio ){
+        this.set = set;
+        this.bezio = bezio;
+    }
+    
+    public void executeCommand( String text ){
+        exSet = set.getExecutionSet(text);
+        String commandName = exSet.getCommandName();
+        GameObject target = exSet.getCommandTarget();
+        
+        if( commandName.equals( GothicConstants.NoCommand ) ){
+            if( target == null ){
+                
+            }
+        }        
+        else if( commandName.equals( GothicConstants.CastAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.CookAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.DropAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.EatDrinkAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.EscapeAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.FightAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.GoToAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.LookAroundAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.OpenAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.PickAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.ShowAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.TalkToAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.TradeAction ) ){
+            
+        }
+        else if( commandName.equals( GothicConstants.UseAction ) ){
+            
+        }
+        
+        
+    }
+    
+    private CommunicationSet set;
+    private ExecutionSet exSet;
+    private Bezi bezio;
+}
