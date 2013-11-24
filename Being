@@ -1,4 +1,3 @@
-
 package gothic;
 
 
@@ -7,27 +6,24 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-public class Being {
+public class Being extends GameObject {
     
-    int hp;
-    int strength;
-    int dexterity;
-    int id;
-    boolean exist = true;
-    public String name;
-    public Location loc;
+    private int hp;
+    private int strength;
+    private int dexterity;
+    private int id;
     
-    public Equip eq;
+    private Equip eq;
     
-    public BufferedImage image;
+    private BufferedImage image;
     boolean ifimage = true;
     // weapon weap;
     
-    Being(int hp, String name, Location location, String sciezka)
+    public Being(int hp, String name, Location location, String sciezka)
     {
+       super( name,location );
        this.hp = hp;
-       this.name = name;
-       this.loc = location;
+       
         
        if( sciezka.equals("false") )
            ifimage = false;
@@ -44,9 +40,43 @@ public class Being {
         
     }
     
-    public Location get_location() { return loc; }
+    @Override
+    public Location getLocation() { return super.getLocation(); }
     
+    public BufferedImage getImage(){
+        return image;
+    }
+    public void setImage( BufferedImage img ){
+        image = img;
+    }
     
+    public int getId(){
+        return id;
+    }
+    public void setId( int id ){
+        this.id = id;
+    }
+    
+    public int getStrength(){
+        return strength;
+    }
+    public void setStrength( int str ){
+        strength = str;
+    }
+    
+    public int getDexterity(){
+        return dexterity;
+    }
+    public void setDexterity( int dex ){
+        dexterity = dex;
+    }
+    
+    public Equip getEquip(){
+        return eq;
+    }
+    public void setEquip( Equip eq ){
+        this.eq = eq;
+    }
     
     public void trade(){}
     public void fight(){}
