@@ -1,0 +1,104 @@
+
+package gothic;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.lang.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+/*
+ * CommunicationSet is responsible for linking user and UCA class, it contains functions, that return UCA and
+ * object targeted by users command. 
+ */
+public class CommunicationSet {
+    public CommunicationSet( GeneralDataBase gdb ){
+        generaldatabase = gdb;
+    }
+    
+    public UserCommandAction getUserCommandAction( String text ){ // text is String from JTextField - user request
+        ArrayList<UserCommandAction> list = generaldatabase.getUCADataBase().getUCAs(); // pobieram UCA z bazy danych
+        ArrayList<String> sep = KeyWords.getSeparatedWords(text); // rozbijam string na pojedyncze wyrazy
+        
+        int[] tab = new int[ list.size() ];
+        for( int i=0; i<tab.length; i++ ) tab[i] = 0; // tworze i zeruje tablice czestosci wystepowania slow kluczowych
+        
+        ArrayList<String> stringList;
+        
+        for( int i=0; i<tab.length; i ++ ){
+            stringList = list.get(i).getKeyWords();            
+            for(int k=0; k<stringList.size(); k++){
+                for( int j=0 ; j<sep.size(); j++ ){                    
+                    if( stringList.get(k).contains(text) ){
+                        tab[i]++;
+                    }
+                }
+            }            
+        }
+        
+        int max = 0;
+        int index = 0;
+        for(int i=0; i<tab.length; i++){
+            if( tab[i] > max ){
+                max = tab[i];
+                index = i;
+            }
+        }
+        
+        return list.get(index);
+    }
+    
+    
+     // returns object, on which command should be executed
+    public Object getCommandTarget( String text, UserCommandAction uca ){
+        ArrayList<String> sep = KeyWords.getSeparatedWords(text);
+        
+        
+        return null;
+    }
+    
+    public ExecutionSet getExecutionSet( String text ){
+        ExecutionSet set = new ExecutionSet();
+        set.setUserCommandAction( getUserCommandAction( text ) );
+        set.setCommandTarget( getCommandTarget( text, set.getUserCommandAction()) );
+        
+        return set;
+    }
+    
+    GeneralDataBase generaldatabase;
+    
+}
+
+
+//******************************************************************************
+
+class ExecutionSet{
+    public void ExecutionSet(){
+        
+    }
+    public void ExecutionSet( UserCommandAction uca, Object commandTarget ){
+        this.uca = uca;
+        this.commandTarget = commandTarget;
+    }
+    
+    public void setUserCommandAction( UserCommandAction uca ){
+        this.uca = uca;
+    }
+    public UserCommandAction getUserCommandAction(){
+        return uca;
+    }
+    public String getCommandName(){
+        return uca.getCommandName();
+    }
+    
+    public void setCommandTarget( Object target ){
+        commandTarget = target;
+    }
+    public Object getCommandTarget(){
+        return commandTarget;
+    }
+    
+    private UserCommandAction uca;
+    private Object commandTarget;
+}
