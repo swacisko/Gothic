@@ -1,4 +1,3 @@
-
 package gothic;
 
 import java.awt.Canvas;
@@ -39,7 +38,7 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
     private Bezi bezi = new Bezi();
     
     private List NPC;
-    private List ObjectsList;
+    private List GameObjectList;
     
     private JTextField order = new JTextField("");
     private JButton send = new JButton("Send");
@@ -49,13 +48,15 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
     
     public static void main(String[] args) {
         Gothic Got = new Gothic();
+   //     CommunicationSet set = new CommunicationSet( new GeneralDataBase() );
+    //    System.out.println( "\n\n\n" + set.getUserCommandAction( "Run away and be coward" ).getCommandName() );
     }
     
     public Gothic()
     {
         super();
         this.NPC = new ArrayList();
-        this.ObjectsList = new ArrayList();
+        this.GameObjectList = new ArrayList();
         init_world();
     }
     
@@ -101,19 +102,19 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
       
       for(int i=0; i<100; i++)
       {
-          ObjectsList.add( new Objects("Raspberry", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Healing Herbs", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Orc Leaf", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Hell Mushroom", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Seraphis", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Beer", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Raspberry", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Healing Herbs", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Orc Leaf", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Hell Mushroom", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Seraphis", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Beer", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
       }
       for(int i=0; i<10; i++)
       {
-          ObjectsList.add( new Objects("Rusty Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Pickaxe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Withered Axe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
-          ObjectsList.add( new Objects("Crude Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));          
+          GameObjectList.add( new GameObject("Rusty Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Pickaxe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Withered Axe", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));
+          GameObjectList.add( new GameObject("Crude Sword", new Location( random.nextInt(690)+5, random.nextInt(534)+5,"world")));          
       }
       
       run();
@@ -123,7 +124,7 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
         while (okno.isVisible()) {
 
      //       repaint();
-        } 
+        }
         okno.setVisible(false);
     }
         
@@ -132,7 +133,7 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0,0,getWidth(),getHeight());
-       File imageFile = new File(bezi.loc.getLocationName()+".jpg");
+       File imageFile = new File(bezi.getLocation().getLocationName()+".jpg");
         try {
             map = ImageIO.read(imageFile);
             g2d.drawImage(map, FrameMarginWidth, FrameMarginHeight, this);
@@ -144,13 +145,13 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
         g2d.setColor(Color.WHITE);
         g2d.drawRect(map.getWidth() + FrameMarginHeight + 10, FrameMarginHeight, 130, map.getHeight());
         
-        g2d.drawImage(bezi.image, bezi.loc.getX() + FrameMarginWidth, bezi.loc.getY() + FrameMarginHeight, this);
+        g2d.drawImage(bezi.getImage(), bezi.getLocation().getX() + FrameMarginWidth, bezi.getLocation().getY() + FrameMarginHeight, this);
         
         
         paintNPC(g2d);
         if( info )
         {
-            paintObjects(g2d);
+            paintGameObject(g2d);
         }
         else
         if( paintEq )
@@ -158,11 +159,11 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
             int j=1;
             g2d.setColor(Color.WHITE);
             g2d.drawString("Your equipment:", map.getWidth() + FrameMarginWidth + 15, FrameMarginHeight + 30);
-            for(int i=0; i<bezi.eq.ObjectsList.size();i++)
+            for(int i=0; i<bezi.getEquip().getObjectsList().size();i++)
             {
-                Objects ob = (Objects)bezi.eq.ObjectsList.get(i);
-               // if( ob.loc.getLocationName().equals(bezi.loc.getLocationName() ) && MOD(ob.loc.getX() - bezi.loc.getX()) <= 18 && MOD(ob.loc.getY() - bezi.loc.getY()) <= 17  )
-                    g2d.drawString(ob.name, map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
+                GameObject ob = (GameObject)bezi.getEquip().getObjectsList().get(i);
+               // if( ob.getLocation().getLocationName().equals(bezi.getLocation().getLocationName() ) && MOD(ob.getLocation().getX() - bezi.getLocation().getX()) <= 18 && MOD(ob.getLocation().getY() - bezi.getLocation().getY()) <= 17  )
+                    g2d.drawString(ob.getName(), map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
             }
         }
     }
@@ -172,28 +173,28 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
         for(int i=0; i<NPC.size(); i++)
         {
             Being ob = (Being)NPC.get(i);
-            if( ob.loc.getLocationName().equals(bezi.loc.getLocationName()) )
+            if( ob.getLocation().getLocationName().equals(bezi.getLocation().getLocationName()) )
             {
                 g2d.setColor(Color.darkGray);
-                g2d.fillRect(ob.loc.getX() + FrameMarginWidth -25 ,ob.loc.getY() + FrameMarginHeight - 15,50,12);
+                g2d.fillRect(ob.getLocation().getX() + FrameMarginWidth -25 ,ob.getLocation().getY() + FrameMarginHeight - 15,50,12);
                 g2d.setColor(Color.WHITE);
-                g2d.drawString(ob.name, ob.loc.getX() + FrameMarginWidth -23 ,ob.loc.getY() + FrameMarginHeight -5 );
+                g2d.drawString(ob.getName(), ob.getLocation().getX() + FrameMarginWidth -23 ,ob.getLocation().getY() + FrameMarginHeight -5 );
             }
         }
     }
     
-    void paintObjects(Graphics2D g2d )
+    void paintGameObject(Graphics2D g2d )
     {
  //       System.out.format("Jestem tutaj");
         int j=1;
         g2d.setColor(Color.WHITE);
         g2d.drawString("What you see around:", map.getWidth() + FrameMarginWidth + 15, FrameMarginHeight + 30);
-        for(int i=0; i<ObjectsList.size();i++)
+        for(int i=0; i<GameObjectList.size();i++)
         {
-            Objects ob = (Objects)ObjectsList.get(i);
-            if( ob.exist )
-            if( ob.loc.getLocationName().equals(bezi.loc.getLocationName() ) && MOD(ob.loc.getX() - bezi.loc.getX()) <= 18 && MOD(ob.loc.getY() - bezi.loc.getY()) <= 17  )
-                g2d.drawString(ob.name, map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
+            GameObject ob = (GameObject)GameObjectList.get(i);
+            if( ob.isExist() )
+            if( ob.getLocation().getLocationName().equals(bezi.getLocation().getLocationName() ) && MOD(ob.getLocation().getX() - bezi.getLocation().getX()) <= 18 && MOD(ob.getLocation().getY() - bezi.getLocation().getY()) <= 17  )
+                g2d.drawString(ob.getName(), map.getWidth() + FrameMarginWidth + 18, FrameMarginHeight + 36 + (j++)*12);
         }
     }
     
@@ -212,14 +213,14 @@ public class Gothic extends JPanel implements Runnable, ActionListener  {
         {
             if( pickup )
             {
-                Objects ob = null;
-                for(int i=0; i<ObjectsList.size(); i++)
+                GameObject ob = null;
+                for(int i=0; i<GameObjectList.size(); i++)
                 {
-                    ob = (Objects)ObjectsList.get(i);
-                    if( ob.name.equals(order.getText()))
+                    ob = (GameObject)GameObjectList.get(i);
+                    if( ob.getName().equals(order.getText()))
                     {
-                        bezi.eq.add(ob);
-                        ob.exist = false;
+                        bezi.getEquip().add(ob);
+                        ob.setExist( false );
                         break;
                     }
                 }
