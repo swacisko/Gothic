@@ -1,0 +1,33 @@
+
+package gothic;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.*;
+import java.lang.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+
+
+public class GothicConstants {    
+    public static final String GoToAction = "GoToAction";
+//    public static final String FindAction = "FindAction";    
+    public static final String NoCommand = "NoCommand";
+    public static final String FightAction = "FightAction";
+    public static final String EscapeAction = "EscapeAction";
+    public static final String PickAction = "PickAction";
+    public static final String ShowAction = "ShowAction";
+    public static final String UseAction = "UseAction";
+    public static final String CastAction = "CastAction";
+    public static final String TradeAction = "TradeAction";
+    public static final String EatDrinkAction = "EatDrinkAction";
+    public static final String TalkToAction = "TalkToAction";
+    public static final String LookAroundAction = "LooakAroundAction";
+    public static final String OpenAction = "OpenAction";
+    public static final String DropAction = "DropAction";
+    public static final String CookAction = "CookAction";
+    public static final String BuyAction = "BuyAction";
+    public static final String SellAction = "SellAction";
+}
+
+
