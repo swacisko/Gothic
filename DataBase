@@ -31,6 +31,10 @@ class NPCDataBase extends DataBase{
         
     }
     
+    public void addObject( Being b ){
+        npcs.add( b );
+    }
+    
     public ArrayList<Being> getNPCs(){
         return npcs;
     }
@@ -50,6 +54,10 @@ class ObjectsDataBase extends DataBase{
     //     objects.add( new GameObject() );
     }
     
+    public void addObject( GameObject ob ){
+        objects.add( ob );
+    }
+    
     public ArrayList<GameObject> getObjects(){
         return objects;
     }
@@ -62,42 +70,74 @@ class ObjectsDataBase extends DataBase{
 class UCADataBase extends DataBase{
     public UCADataBase(){
         super();
+        printCommands();
+    }
+    
+    public void printCommands(){
+        for(int i=0; i<ucas.size(); i++){
+            System.out.println( ucas.get(i).getCommandName() );
+        }
     }
     
     @Override
     public void fillDataBase(){
+        ucas = new ArrayList<>(20);      
+        
         ucas.add( new NoCommand() );
+        ucas.add( new GoToCommand() );
+        ucas.add( new LookAroundCommand() );
+        ucas.add( new TalkToCommand() );
+        ucas.add( new PickCommand() );
         ucas.add( new CookCommand() );
         ucas.add( new CastCommand() );
         ucas.add( new DropCommand() );
         ucas.add( new EatDrinkCommand() );
-        ucas.add( new EscapeCommand() );
-        ucas.add( new LookAroundCommand() );
-        ucas.add( new FightCommand() );
-        ucas.add( new TalkToCommand() );
+        ucas.add( new EscapeCommand() );        
+        ucas.add( new FightCommand() );        
         ucas.add( new UseCommand() );
         ucas.add( new TradeCommand() );
         ucas.add( new OpenCommand() );
-        ucas.add( new ShowCommand() );
-        ucas.add( new PickCommand() );
-        ucas.add( new GoToCommand() );
+        ucas.add( new ShowCommand() );        
         
         ucas.trimToSize();        
+    }
+    
+    public void addProneObject( GameObject obj ){
+        for( UserCommandAction act : ucas ){
+            if( act instanceof PickCommand || act instanceof EatDrinkCommand || act instanceof UseCommand ||
+                act instanceof CastCommand || act instanceof OpenCommand || act instanceof DropCommand ||
+                act instanceof CookCommand  ){
+                act.addProneToActionObject( obj );
+            }
+        }        
+    }    
+    public void addProneBeing( Being b ){
+        for( UserCommandAction act : ucas ){
+            if( act instanceof FightCommand || act instanceof GoToCommand || 
+                act instanceof TalkToCommand || act instanceof TradeCommand  ){
+                act.addProneToActionObject( b );
+            }
+        }   
+    }
+    public void addProneGameObject( GameObject obj ){
+        if(obj instanceof Being ) addProneBeing( (Being)obj );
+        else addProneObject( obj );
     }
     
     public ArrayList<UserCommandAction> getUCAs(){
         return ucas;
     }
     
-    private ArrayList<UserCommandAction> ucas = new ArrayList<>(20);
+    private ArrayList<UserCommandAction> ucas;// = new ArrayList<>(20); // to juz jest w fillDataBase
 }
 
-// 
+// **************************************************************************** General Data Base
 
-class GeneralDataBase{
+class GeneralDataBase
+{
     public GeneralDataBase(){
-        
-    }
+        addGameObjectsToUCAs();
+    }    
     
     public ObjectsDataBase getObjectsDataBase(){
         return odb;
@@ -109,7 +149,27 @@ class GeneralDataBase{
         return ucadb;
     }
     
-    private ObjectsDataBase odb;
-    private NPCDataBase npcdb;
-    private UCADataBase ucadb;    
+    private void addGameObjectsToUCAs(){
+        ArrayList<GameObject> gameObjectList = odb.getObjects();
+        ArrayList<Being> living = npcdb.getNPCs();
+        
+        for( GameObject obj : gameObjectList ){
+            ucadb.addProneObject( obj );
+        }
+        
+        for( Being b : living ){
+            ucadb.addProneBeing( b );
+        }
+    }
+    
+    public void addToDataBase( GameObject ob ){
+        ucadb.addProneObject(ob);
+        if( ob instanceof Being ) npcdb.addObject( (Being) ob );
+        else if( ob instanceof GameObject ) odb.addObject( ob );
+    }
+      
+    
+    private ObjectsDataBase odb = new ObjectsDataBase();
+    private NPCDataBase npcdb = new NPCDataBase();
+    private UCADataBase ucadb = new UCADataBase();    
 }
