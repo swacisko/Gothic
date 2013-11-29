@@ -8,7 +8,7 @@ package gothic;
  *
  * @author E6410
  */
-public class GameObject {
+public class GameObject implements Cloneable {
     public GameObject( String name, Location l ){
         loc = l;
         this.name = name;
@@ -42,6 +42,12 @@ public class GameObject {
     
     private boolean findTextByDescription( String text ){ // to musi zostac zmienione
         return description.equalsIgnoreCase( text );
+    }
+    
+    @Override
+    public Object clone(){
+        GameObject ob = new GameObject( new String( getName() ), ( Location )getLocation().clone() );
+        return ob;
     }
     
     private String name;
