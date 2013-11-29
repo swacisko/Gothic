@@ -22,12 +22,8 @@ public class GothicConstants {
     public static final String TradeAction = "TradeAction";
     public static final String EatDrinkAction = "EatDrinkAction";
     public static final String TalkToAction = "TalkToAction";
-    public static final String LookAroundAction = "LooakAroundAction";
+    public static final String LookAroundAction = "LookAroundAction";
     public static final String OpenAction = "OpenAction";
     public static final String DropAction = "DropAction";
     public static final String CookAction = "CookAction";
-    public static final String BuyAction = "BuyAction";
-    public static final String SellAction = "SellAction";
 }
-
-
